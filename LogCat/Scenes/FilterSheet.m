@@ -7,14 +7,6 @@
 
 #import "FilterSheet.h"
 
-#define KEY_TIME @"time"
-#define KEY_APP @"app"
-#define KEY_PID @"pid"
-#define KEY_TID @"tid"
-#define KEY_TYPE @"type"
-#define KEY_NAME @"name"
-#define KEY_TEXT @"text"
-
 @implementation FilterSheet
 
 @synthesize filterType;

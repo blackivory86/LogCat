@@ -16,16 +16,15 @@
 
 #define DARK_GREEN_COLOR [NSColor colorWithCalibratedRed:0 green:0.50 blue:0 alpha:1.0]
 
-#define SEARCH_FORWARDS   1
-#define SEARCH_BACKWARDS -1
+NSInteger const SEARCH_FORWARDS = 1;
+NSInteger const SEARCH_BACKWARDS = -1;
+BOOL const SEARCH_WITH_REGEX = YES;
+BOOL const USE_DARK_BACKGROUND = NO;
 
-#define SEARCH_WITH_REGEX YES
-#define USE_DARK_BACKGROUND NO
+NSString* const LOG_DATA_KEY = @"logdata";
+NSString* const LOG_FILE_VERSION = @"version";
 
-#define LOG_DATA_KEY @"logdata"
-#define LOG_FILE_VERSION @"version"
-
-#define DEFAULT_PREDICATE @"(app ==[cd] 'YOUR_APP_NAME') AND ((type ==[cd] 'E') OR (type ==[cd] 'W'))"
+NSString* const DEFAULT_PREDICATE = @"(app ==[cd] 'YOUR_APP_NAME') AND ((type ==[cd] 'E') OR (type ==[cd] 'W'))";
 
 @interface LogCatAppDelegate () {
     CGFloat fontHeight;

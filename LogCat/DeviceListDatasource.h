@@ -7,8 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
-#define DEVICE_ID_KEY @"id"
-#define DEVICE_TYPE_KEY @"type"
+extern NSString* const DEVICE_ID_KEY;
+extern NSString* const DEVICE_TYPE_KEY;
+
 
 @protocol DeviceListDatasourceDelegate <NSObject>
 

@@ -9,12 +9,12 @@
 #import "AdbTaskHelper.h"
 #import "RGBHelper.h"
 
-#define SCREEN_CAP_SCREENCAP 1
-#define SCREEN_CAP_FB0 2
+NSInteger const  SCREEN_CAP_SCREENCAP = 1;
+NSInteger const  SCREEN_CAP_FB0 = 2;
 
-#define SCREEN_CAP_TYPE SCREEN_CAP_SCREENCAP
+NSInteger const SCREEN_CAP_TYPE = SCREEN_CAP_SCREENCAP; // 1 - SCREEN_CAP_SCREENCAP; 2 - SCREEN_CAP_FB0
 
-#define SCREEN_CAP_FILE @"/mnt/sdcard/.logcatPNG"
+NSString* const SCREEN_CAP_FILE = @"/mnt/sdcard/.logcatPNG";
 
 @interface DeviceScreenDatasource () {
     uint32_t width;

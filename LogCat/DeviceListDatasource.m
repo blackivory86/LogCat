@@ -8,6 +8,10 @@
 #import "DeviceListDatasource.h"
 #import "AdbTaskHelper.h"
 
+NSString* const DEVICE_ID_KEY = @"id";
+NSString* const DEVICE_TYPE_KEY = @"type";
+
+
 @interface DeviceListDatasource () {
     
 }

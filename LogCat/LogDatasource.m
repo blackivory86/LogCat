@@ -13,14 +13,14 @@
 // 1 - adb logcat -v long
 // 2 - adb logcat -v threadtime
 // 3 - adb logcat -B  # Work in progress: The binary streams seems to get corrupted and does not work reliably.
-#define LOG_FORMAT 2
+const NSInteger LOG_FORMAT = 2;
 
 
-#define LOG_HEADER_LEN 20
-#define LOG_HEADER_LEN2 18
+const NSInteger LOG_HEADER_LEN = 20;
+const NSInteger LOG_HEADER_LEN2 = 18;
 
-#define MAX_EVENT 20000
-#define PRUNE_COUNT 1000
+const NSInteger MAX_EVENT = 20000;
+const NSInteger PRUNE_COUNT = 1000;
 
 @interface LogDatasource () {
 }
@@ -834,7 +834,7 @@
     }
     
     if ([self.logData count] > MAX_EVENT) {
-        NSLog(@"Prune event. %ld > %d", [self.logData count], MAX_EVENT);
+        NSLog(@"Prune event. %ld > %@", [self.logData count], @(MAX_EVENT) );
         // Make room for more events
         while ([self.logData count] > (MAX_EVENT-PRUNE_COUNT)) {
             [self.logData removeObjectAtIndex:0];
