@@ -29,9 +29,7 @@
 @property (strong, nonatomic) NSDate *startTime;
 @property (strong, nonatomic) NSData* pendingData;
 @property (strong, nonatomic) NSThread* thread;
-@property (strong, nonatomic) NSMutableDictionary* pidMap;
 @property (strong, atomic) NSMutableArray* logData;
-@property (strong, nonatomic) NSArray* keysArray;
 @property (strong, nonatomic) NSString* time;
 @property (strong, nonatomic) NSString* app;
 @property (strong, nonatomic) NSString* pid;
@@ -589,7 +587,7 @@
 }
 
 - (void) parseThreadTimeLine: (NSString*) line {
-    
+    NSLog(@"line: %@", line);
     
     if ([line hasPrefix:@"-appPID"] || [line hasPrefix:@"- appPID"]) {
         NSArray *strings = [line componentsSeparatedByString:@","];
@@ -689,6 +687,7 @@
 
     //time, app, pid, tid, type, name, text, 
     NSArray* values = @[[self getIndex], fullTimeVal, appVal, pidVal, tidVal, logLevelVal, tagVal, msgVal];
+    NSLog(@"values: %@", values);
     NSDictionary* row = [NSDictionary dictionaryWithObjects:values forKeys:self.keysArray];
     [self appendRow:row];
 
@@ -821,6 +820,9 @@
 }
 
 - (void) appendRow: (NSDictionary*) row {
+    if(!self.logData)
+        self.logData = [[NSMutableArray alloc] init];
+    
     NSTimeInterval elapsedTime = -[self.startTime timeIntervalSinceNow];
     if (elapsedTime < 30 && self.logData != nil && [self.logData count] > 0) {
         NSDictionary* lastItem = [self.logData lastObject];
@@ -833,13 +835,13 @@
         [self.logData addObject:row];
     }
     
-    if ([self.logData count] > MAX_EVENT) {
-        NSLog(@"Prune event. %ld > %d", [self.logData count], MAX_EVENT);
-        // Make room for more events
-        while ([self.logData count] > (MAX_EVENT-PRUNE_COUNT)) {
-            [self.logData removeObjectAtIndex:0];
-        }
-    }
+//    if ([self.logData count] > MAX_EVENT) {
+//        NSLog(@"Prune event. %ld > %d", [self.logData count], MAX_EVENT);
+//        // Make room for more events
+//        while ([self.logData count] > (MAX_EVENT-PRUNE_COUNT)) {
+//            [self.logData removeObjectAtIndex:0];
+//        }
+//    }
 }
 
 - (void) logMessage: (NSString*) message {

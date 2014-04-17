@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6BA5C81018FDD4E900D69070 /* LogfileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA5C80F18FDD4E900D69070 /* LogfileDataSource.m */; };
+		6BA5C81318FEFF4B00D69070 /* DDFileReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA5C81218FEFF4B00D69070 /* DDFileReader.m */; };
 		8328F08D16820383000E47B5 /* RemoteScreenMonitor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8328F08C16820383000E47B5 /* RemoteScreenMonitor.xib */; };
 		8328F091168203AF000E47B5 /* RemoteScreenMonitorSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328F090168203AF000E47B5 /* RemoteScreenMonitorSheet.m */; };
 		8328F09616820D03000E47B5 /* DeviceScreenDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8328F09516820D03000E47B5 /* DeviceScreenDatasource.m */; };
@@ -36,6 +38,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6BA5C80E18FDD4E900D69070 /* LogfileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogfileDataSource.h; sourceTree = "<group>"; };
+		6BA5C80F18FDD4E900D69070 /* LogfileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogfileDataSource.m; sourceTree = "<group>"; };
+		6BA5C81118FEFF4B00D69070 /* DDFileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileReader.h; sourceTree = "<group>"; };
+		6BA5C81218FEFF4B00D69070 /* DDFileReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileReader.m; sourceTree = "<group>"; };
 		8328F08C16820383000E47B5 /* RemoteScreenMonitor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemoteScreenMonitor.xib; sourceTree = "<group>"; };
 		8328F08F168203AF000E47B5 /* RemoteScreenMonitorSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteScreenMonitorSheet.h; sourceTree = "<group>"; };
 		8328F090168203AF000E47B5 /* RemoteScreenMonitorSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemoteScreenMonitorSheet.m; sourceTree = "<group>"; };
@@ -106,6 +112,8 @@
 				83542DDE167ECA0A000AF99E /* DeviceListDatasource.m */,
 				8328F09416820D03000E47B5 /* DeviceScreenDatasource.h */,
 				8328F09516820D03000E47B5 /* DeviceScreenDatasource.m */,
+				6BA5C80E18FDD4E900D69070 /* LogfileDataSource.h */,
+				6BA5C80F18FDD4E900D69070 /* LogfileDataSource.m */,
 			);
 			name = Datasources;
 			sourceTree = "<group>";
@@ -148,6 +156,8 @@
 				83486932167D7853001BF84D /* AdbTaskHelper.m */,
 				83FECD0E1680FFB3004F1E07 /* BinaryDataScanner.h */,
 				83FECD0F1680FFB3004F1E07 /* BinaryDataScanner.m */,
+				6BA5C81118FEFF4B00D69070 /* DDFileReader.h */,
+				6BA5C81218FEFF4B00D69070 /* DDFileReader.m */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -317,9 +327,11 @@
 				83486928167D630D001BF84D /* SelectableTableView.m in Sources */,
 				83486929167D630D001BF84D /* NSString_Extension.m in Sources */,
 				8348692C167D6926001BF84D /* LogDatasource.m in Sources */,
+				6BA5C81318FEFF4B00D69070 /* DDFileReader.m in Sources */,
 				83486933167D7853001BF84D /* AdbTaskHelper.m in Sources */,
 				83542DDF167ECA0A000AF99E /* DeviceListDatasource.m in Sources */,
 				83FECD0B1680092C004F1E07 /* DevicePickerSheet.m in Sources */,
+				6BA5C81018FDD4E900D69070 /* LogfileDataSource.m in Sources */,
 				83FECD101680FFB3004F1E07 /* BinaryDataScanner.m in Sources */,
 				8328F091168203AF000E47B5 /* RemoteScreenMonitorSheet.m in Sources */,
 				8328F09616820D03000E47B5 /* DeviceScreenDatasource.m in Sources */,

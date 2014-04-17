@@ -13,6 +13,7 @@
 #import "MenuDelegate.h"
 #import "NSString_Extension.h"
 #import "DeviceListDatasource.h"
+#import "LogfileDataSource.h"
 
 #define DARK_GREEN_COLOR [NSColor colorWithCalibratedRed:0 green:0.50 blue:0 alpha:1.0]
 
@@ -1221,12 +1222,35 @@
             
             NSURL* url = urls[0];
             NSLog(@"Open url: %@", url);
-            NSDictionary* savedData = [NSDictionary dictionaryWithContentsOfURL:url];
-            self.loadedLogData = [savedData valueForKey:LOG_DATA_KEY];
-            self.logData = self.loadedLogData;
-            [self.logDataTable reloadData];
+            
+            [self openlogFromURL:url];
         }
     }
+}
+
+- (void)openlogFromURL:(NSURL*)url
+{
+    //do nothing if no URL was passed
+    if(!url)
+        return;
+    
+    //detect the different filetypes
+    
+    //try .logcat xml format first
+    NSDictionary* savedData = [NSDictionary dictionaryWithContentsOfURL:url];
+    if(savedData && [savedData valueForKey:LOG_DATA_KEY])
+    {
+        self.loadedLogData = [savedData valueForKey:LOG_DATA_KEY];
+        self.logData = self.loadedLogData;
+        [self.logDataTable reloadData];
+        return;
+    }
+    
+    //try to parse logcat text-file
+    LogfileDataSource* logfileReader = [[LogfileDataSource alloc] init];
+    logfileReader.delegate = self;
+    self.logDatasource = logfileReader;
+    [logfileReader readLogFromURL:url];
 }
 
 - (IBAction)toggleAutoFollow:(id)sender {

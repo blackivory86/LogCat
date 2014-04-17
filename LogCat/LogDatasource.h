@@ -35,6 +35,8 @@
 @property (strong) NSString* deviceId;
 @property (atomic) BOOL isLogging;
 @property (atomic) BOOL skipPidLookup;
+@property (strong, nonatomic) NSMutableDictionary* pidMap;
+@property (strong, nonatomic) NSArray* keysArray;
 
 - (void) startLogger;
 - (void) stopLogger;
@@ -44,5 +46,8 @@
 - (NSArray*) eventsForPredicate: (NSPredicate*) predicate;
 
 - (void)readLog:(id)param;
+
+- (NSNumber*) getIndex;
+- (void)appendRow:(NSDictionary*)row;
 
 @end
