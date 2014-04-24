@@ -31,15 +31,27 @@
     if(self)
     {
         NSError* error;
-        regExpBrief = [NSRegularExpression regularExpressionWithPattern:@"^(?<level>[VDIWEAF])\\/(?<tag>[^)]{0,23}?)\\(\\s*(?<pid>\\d+)\\):\\s+(?<message>.*)$"
+        regExpBrief = [NSRegularExpression regularExpressionWithPattern:@"^([VDIWEAF])" //level
+                                                                        "\\/([^)]{0,23}?)" //tag
+                                                                        "\\(\\s*(\\d+)\\)" //pid
+                                                                        ":\\s+(.*)$" //message
                                                                 options:NSRegularExpressionCaseInsensitive
                                                                   error:&error];
         
-        regExpThreadtime = [NSRegularExpression regularExpressionWithPattern:@"^(?<timestamp>\\d\\d-\\d\\d\\s\\d\\d:\\d\\d:\\d\\d\\.\\d+)\\s*(?<pid>\\d+)\\s*(?<tid>\\d+)\\s(?<level>[VDIWEAF])\\s(?<tag>.*?):\\s+(?<message>.*)$"
+        regExpThreadtime = [NSRegularExpression regularExpressionWithPattern:   @"^(\\d{2}-\\d{2}\\s\\d{2}:\\d{2}:\\d{2}\\.\\d+)"//time
+                                                                                "\\s*(\\d+)" //pid
+                                                                                "\\s*(\\d+)" //tid
+                                                                                "\\s([VDIWEAF])" //level
+                                                                                "\\s(.*?)" //tag
+                                                                                ":\\s+(.*)$" //message
                                                                      options:NSRegularExpressionCaseInsensitive
                                                                        error:&error];
         
-        regExpTime = [NSRegularExpression regularExpressionWithPattern:@"^(\\d{2}-\\d{2}\\s\\d{2}:\\d{2}:\\d{2}\\.\\d+):*\\s([VDIWEAF])\\/(.*?)\\((\\d+)\\):\\s+(.*)$"
+        regExpTime = [NSRegularExpression regularExpressionWithPattern:@"^(\\d{2}-\\d{2}\\s\\d{2}:\\d{2}:\\d{2}\\.\\d+)" //time
+                                                                        ":*\\s([VDIWEAF])" //level
+                                                                        "\\/(.*?)" //tag
+                                                                        "\\((\\d+)\\)" //pid
+                                                                        ":\\s+(.*)$" //message
                                                                options:NSRegularExpressionCaseInsensitive
                                                                  error:&error];
         if(!regExpTime)
@@ -47,19 +59,30 @@
             NSLog(@"error: %@", error);
         }
         
-        regExpProcess = [NSRegularExpression regularExpressionWithPattern:@"^(?<level>[VDIWEAF])\\(\\s*(?<pid>\\d+)\\)\\s+(?<message>.*)$"
+        regExpProcess = [NSRegularExpression regularExpressionWithPattern:  @"^([VDIWEAF])" //level
+                                                                            "\\(\\s*(\\d+)\\)" //pid
+                                                                            "\\s+(.*)$" //message
                                                                   options:NSRegularExpressionCaseInsensitive
                                                                     error:&error];
         
-        regExpTag = [NSRegularExpression regularExpressionWithPattern:@"^(?<level>[VDIWEAF])\\/(?<tag>[^)]{0,23}?):\\s+(?<message>.*)$"
+        regExpTag = [NSRegularExpression regularExpressionWithPattern:  @"^([VDIWEAF])" //level
+                                                                        "\\/([^)]{0,23}?)" //tag
+                                                                        ":\\s+(.*)$" //message
                                                               options:NSRegularExpressionCaseInsensitive
                                                                 error:&error];
         
-        regExpThread = [NSRegularExpression regularExpressionWithPattern:@"^(?<level>[VDIWEAF])\\(\\s*(?<pid>\\d+):(?<tid>0x.*?)\\)\\s+(?<message>.*)$"
+        regExpThread = [NSRegularExpression regularExpressionWithPattern:   @"^([VDIWEAF])" //level
+                                                                            "\\(\\s*(\\d+)" //pid
+                                                                            ":(0x.*?)" //tid
+                                                                            "\\)\\s+(.*)$" //message
                                                                  options:NSRegularExpressionCaseInsensitive
                                                                    error:&error];
         
-        regExpDdmsSave = [NSRegularExpression regularExpressionWithPattern:@"^(?<timestamp>\\d\\d-\\d\\d\\s\\d\\d:\\d\\d:\\d\\d\\.\\d+):*\\s(?<level>VERBOSE|DEBUG|ERROR|WARN|INFO|ASSERT)\\/(?<tag>.*?)\\((?<pid>\\s*\\d+)\\):\\s+(?<message>.*)$"
+        regExpDdmsSave = [NSRegularExpression regularExpressionWithPattern:@"^(\\d{2}-\\d{2}\\s\\d{2}:\\d{2}:\\d{2}\\.\\d+)" //time
+                                                                            ":*\\s(VERBOSE|DEBUG|ERROR|WARN|INFO|ASSERT)" //level
+                                                                            "\\/(.*?)" //tag
+                                                                            "\\((\\s*\\d+)\\)" //pid
+                                                                            ":\\s+(.*)$" //message
                                                                    options:NSRegularExpressionCaseInsensitive
                                                                      error:&error];
     }
